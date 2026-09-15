@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administration — DDRKY</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ==========================================
+           CARTES DES CANDIDATURES
+        ========================================== */
+
+        .candidature-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #1769aa;
+        }
+
+        .candidature-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .candidature-header h3 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .statut {
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .statut-attente {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .statut-approuve {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .statut-refuse {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .candidature-info {
+            margin-bottom: 20px;
+        }
+
+        .candidature-info p {
+            margin: 8px 0;
+        }
+
+        .candidature-motivation {
+            background: #f5f7fb;
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+
+        .candidature-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .approve-button,
+        .refuse-button {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .approve-button {
+            background: #1769aa;
+            color: white;
+        }
+
+        .approve-button:hover {
+            background: #0d4f82;
+        }
+
+        .refuse-button {
+            background: #111827;
+            color: white;
+        }
+
+        .refuse-button:hover {
+            background: #000000;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 40px;
+            background: #f5f7fb;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 600px) {
+
+            .candidature-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .candidature-actions {
+                flex-direction: column;
+            }
+
+            .approve-button,
+            .refuse-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- ==========================================
+         EN-TÊTE
+    ========================================== -->
+
+    <header class="header">
+
+        <div class="logo">
+            DDRKY
+        </div>
+
+        <nav class="navigation">
+
+            <a href="index.html">
+                Accueil
+            </a>
+
+            <a href="boutique.html">
+                Boutique
+            </a>
+
+            <a href="#" id="adminLogout">
+                Déconnexion
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ==========================================
+         CONTENU
+    ========================================== -->
+
+    <main>
+
+        <section class="application-section">
+
+            <div class="application-container">
+
+
+                <!-- TITRE -->
+
+                <div class="application-title">
+
+                    <p>
+                        DDRKY ADMINISTRATION
+                    </p>
+
+                    <h1>
+                        Tableau de bord
+                    </h1>
+
+                    <h2>
+                        GESTION DES PARTENAIRES
+                    </h2>
+
+                    <span>
+                        Gère les candidatures et l'activité DDRKY.
+                    </span>
+
+                </div>
+
+
+                <!-- ==========================================
+                     STATISTIQUES
+                ========================================== -->
+
+                <div class="action-container">
+
+
+                    <!-- TOTAL -->
+
+                    <div class="action-card">
+
+                        <div class="action-icon">
+                            👥
+                        </div>
+
+                        <h3>
+                            Candidatures
+                        </h3>
+
+                        <p>
+                            Nombre total de candidatures reçues.
+                        </p>
+
+                        <strong id="totalCandidatures">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <!-- EN ATTENTE -->
+
+                    <div class="action-card">
+
+                        <div class="action-icon">
+                            ⏳
+                        </div>
+
+                        <h3>
+                            En attente
+                        </h3>
+
+                        <p>
+                            Candidatures qui attendent une décision.
+                        </p>
+
+                        <strong id="candidaturesAttente">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <!-- APPROUVÉS -->
+
+                    <div class="action-card partner-card">
+
+                        <div class="action-icon">
+                            ✅
+                        </div>
+
+                        <h3>
+                            Partenaires approuvés
+                        </h3>
+
+                        <p>
+                            Nombre de partenaires validés.
+                        </p>
+
+                        <strong id="partenairesApprouves">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==========================================
+                     LISTE DES CANDIDATURES
+                ========================================== -->
+
+                <div style="margin-top: 50px;">
+
+                    <h2 style="
+                        text-align: center;
+                        margin-bottom: 25px;
+                    ">
+                        Candidatures reçues
+                    </h2>
+
+
+                    <div id="candidaturesContainer">
+
+                        <p style="text-align: center;">
+                            Chargement des candidatures...
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==========================================
+         PIED DE PAGE
+    ========================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-logo">
+            DDRKY
+        </div>
+
+        <p>
+            From Darkness to Greatness.
+        </p>
+
+        <p class="copyright">
+            © 2026 DDRKY — Tous droits réservés.
+        </p>
+
+    </footer>
+
+
+    <!-- ==========================================
+         SCRIPTS
+    ========================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="supabase.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

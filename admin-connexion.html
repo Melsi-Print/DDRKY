@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administration — Connexion DDRKY</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="logo">
+            DDRKY
+        </div>
+
+        <nav class="navigation">
+
+            <a href="index.html">
+                Accueil
+            </a>
+
+            <a href="boutique.html">
+                Boutique
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <section class="application-section">
+
+            <div class="application-container">
+
+                <div class="application-title">
+
+                    <p>DDRKY ADMINISTRATION</p>
+
+                    <h1>
+                        Connexion administrateur
+                    </h1>
+
+                    <h2>
+                        ACCÈS AU TABLEAU DE BORD
+                    </h2>
+
+                    <span>
+                        Cette connexion est réservée à l'administration DDRKY.
+                    </span>
+
+                </div>
+
+
+                <!-- ==========================================
+                     CONNEXION
+                =========================================== -->
+
+                <form id="adminLoginForm">
+
+                    <div class="form-group">
+
+                        <label for="adminEmail">
+                            Adresse e-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="adminEmail"
+                            name="adminEmail"
+                            placeholder="E-mail administrateur"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="adminPassword">
+                            Mot de passe
+                        </label>
+
+                        <input
+                            type="password"
+                            id="adminPassword"
+                            name="adminPassword"
+                            placeholder="Mot de passe"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                    >
+                        Se connecter
+                    </button>
+
+                </form>
+
+
+                <!-- ==========================================
+                     MOT DE PASSE OUBLIÉ
+                =========================================== -->
+
+                <div style="
+                    text-align: center;
+                    margin-top: 20px;
+                ">
+
+                    <button
+                        type="button"
+                        id="forgotPasswordButton"
+                        style="
+                            background: none;
+                            border: none;
+                            color: #1769aa;
+                            cursor: pointer;
+                            font-size: 15px;
+                            text-decoration: underline;
+                        "
+                    >
+                        Mot de passe oublié ?
+                    </button>
+
+                </div>
+
+
+                <!-- ==========================================
+                     FORMULAIRE DE RÉINITIALISATION
+                =========================================== -->
+
+                <div
+                    id="resetPasswordBox"
+                    style="
+                        display: none;
+                        margin-top: 25px;
+                        padding: 25px;
+                        background: #f5f7fb;
+                        border-radius: 15px;
+                    "
+                >
+
+                    <h3 style="
+                        text-align: center;
+                        margin-bottom: 10px;
+                    ">
+                        Réinitialiser ton mot de passe
+                    </h3>
+
+                    <p style="
+                        text-align: center;
+                        margin-bottom: 20px;
+                    ">
+                        Entre ton adresse e-mail administrateur.
+                        Nous t'enverrons un lien pour créer un nouveau mot de passe.
+                    </p>
+
+
+                    <form id="resetPasswordForm">
+
+                        <div class="form-group">
+
+                            <label for="resetEmail">
+                                Adresse e-mail
+                            </label>
+
+                            <input
+                                type="email"
+                                id="resetEmail"
+                                name="resetEmail"
+                                placeholder="Ton e-mail administrateur"
+                                required
+                            >
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="submit-button"
+                        >
+                            Envoyer le lien
+                        </button>
+
+                    </form>
+
+
+                    <p
+                        id="resetMessage"
+                        style="
+                            text-align: center;
+                            margin-top: 15px;
+                            font-weight: bold;
+                        "
+                    ></p>
+
+                </div>
+
+
+                <p style="
+                    text-align: center;
+                    margin-top: 25px;
+                ">
+
+                    <a href="index.html">
+                        Retour à l'accueil
+                    </a>
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="footer-logo">
+            DDRKY
+        </div>
+
+        <p>
+            From Darkness to Greatness.
+        </p>
+
+        <p class="copyright">
+            © 2026 DDRKY — Tous droits réservés.
+        </p>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="supabase.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

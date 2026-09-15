@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Devenir partenaire — DDRKY</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="logo">
+            DDRKY
+        </div>
+
+        <nav class="navigation">
+
+            <a href="index.html">
+                Accueil
+            </a>
+
+            <a href="index.html#actions">
+                Actions
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <section class="application-section">
+
+            <div class="application-container">
+
+                <div class="application-title">
+
+                    <p>DDRKY PATTERN</p>
+
+                    <h1>
+                        Devenir partenaire
+                    </h1>
+
+                    <h2>
+                        PORTE DDRKY. REPRÉSENTE DDRKY. GAGNE AVEC DDRKY.
+                    </h2>
+
+                    <span>
+                        Rejoins les premiers DDRKY PATTERNS et fais partie
+                        de l'aventure DDRKY.
+                    </span>
+
+                </div>
+
+
+                <!-- ==============================
+                     FORMULAIRE
+                =============================== -->
+
+                <form id="partnerForm">
+
+
+                    <div class="form-group">
+
+                        <label for="nom">
+                            Nom
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nom"
+                            name="nom"
+                            placeholder="Votre nom"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="prenom">
+                            Prénom
+                        </label>
+
+                        <input
+                            type="text"
+                            id="prenom"
+                            name="prenom"
+                            placeholder="Votre prénom"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Adresse e-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Votre adresse e-mail"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="whatsapp">
+                            Numéro WhatsApp
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="whatsapp"
+                            name="whatsapp"
+                            placeholder="Ex : 70 00 00 00"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="ville">
+                            Ville
+                        </label>
+
+                        <input
+                            type="text"
+                            id="ville"
+                            name="ville"
+                            placeholder="Votre ville"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="photo">
+                            Photo de profil
+                            <span>(facultative)</span>
+                        </label>
+
+                        <input
+                            type="file"
+                            id="photo"
+                            name="photo"
+                            accept="image/*"
+                        >
+
+                        <small>
+                            Format recommandé : JPG, JPEG ou PNG.
+                        </small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="motivation">
+                            Pourquoi souhaitez-vous devenir
+                            partenaire DDRKY ?
+                        </label>
+
+                        <textarea
+                            id="motivation"
+                            name="motivation"
+                            rows="6"
+                            placeholder="Expliquez-nous votre motivation..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <input
+                        type="hidden"
+                        id="statut"
+                        name="statut"
+                        value="En attente d'approbation"
+                    >
+
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                    >
+                        Enregistrer ma candidature
+                    </button>
+
+                </form>
+
+
+                <!-- ==============================
+                     CONFIRMATION
+                =============================== -->
+
+                <div
+                    id="confirmationMessage"
+                    class="confirmation-message"
+                    style="display: none;"
+                >
+
+                    <div class="confirmation-icon">
+                        ✓
+                    </div>
+
+                    <h2>
+                        Candidature enregistrée
+                    </h2>
+
+                    <p>
+                        Votre candidature a été enregistrée avec succès.
+                        Votre dossier est actuellement en cours d'examen.
+                        Vous serez contacté après validation de votre candidature.
+                    </p>
+
+                    <a
+                        href="index.html"
+                        class="action-button"
+                    >
+                        Retour à l'accueil
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="footer-logo">
+            DDRKY
+        </div>
+
+        <p>
+            From Darkness to Greatness.
+        </p>
+
+        <p class="copyright">
+            © 2026 DDRKY — Tous droits réservés.
+        </p>
+
+    </footer>
+
+
+    <!-- SUPABASE -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="supabase.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

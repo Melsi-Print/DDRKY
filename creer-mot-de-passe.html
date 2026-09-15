@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Créer mon mot de passe — DDRKY</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==========================================
+         EN-TÊTE
+    ========================================== -->
+
+    <header class="header">
+
+        <div class="logo">
+            DDRKY
+        </div>
+
+        <nav class="navigation">
+
+            <a href="index.html">
+                Accueil
+            </a>
+
+            <a href="boutique.html">
+                Boutique
+            </a>
+
+            <a href="connexion.html">
+                Connexion
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ==========================================
+         CONTENU
+    ========================================== -->
+
+    <main>
+
+        <section class="application-section">
+
+            <div class="application-container">
+
+                <div class="application-title">
+
+                    <p>
+                        DDRKY PARTENAIRE
+                    </p>
+
+                    <h1>
+                        Créer mon mot de passe
+                    </h1>
+
+                    <h2>
+                        ACTIVE TON ESPACE
+                    </h2>
+
+                    <span>
+                        Crée ton mot de passe pour accéder à ton espace partenaire DDRKY.
+                    </span>
+
+                </div>
+
+
+                <!-- ==========================================
+                     FORMULAIRE
+                ========================================== -->
+
+                <form id="createPasswordForm">
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Adresse e-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="L'e-mail utilisé pour ta candidature"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Nouveau mot de passe
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Choisis ton mot de passe"
+                            minlength="6"
+                            required
+                        >
+
+                        <small>
+                            Minimum 6 caractères.
+                        </small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirmer le mot de passe
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="Confirme ton mot de passe"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                    >
+                        Créer mon mot de passe
+                    </button>
+
+                </form>
+
+
+                <!-- ==========================================
+                     MESSAGE
+                ========================================== -->
+
+                <p
+                    id="passwordMessage"
+                    style="
+                        display:none;
+                        margin-top:25px;
+                        text-align:center;
+                        font-weight:bold;
+                    "
+                ></p>
+
+
+                <div
+                    style="
+                        text-align:center;
+                        margin-top:25px;
+                    "
+                >
+
+                    <a
+                        href="connexion.html"
+                        class="action-button"
+                    >
+                        Retour à la connexion
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==========================================
+         PIED DE PAGE
+    ========================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-logo">
+            DDRKY
+        </div>
+
+        <p>
+            From Darkness to Greatness.
+        </p>
+
+        <p class="copyright">
+            © 2026 DDRKY — Tous droits réservés.
+        </p>
+
+    </footer>
+
+
+    <!-- ==========================================
+         SUPABASE
+    ========================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="supabase.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
