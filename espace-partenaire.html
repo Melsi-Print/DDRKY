@@ -4,222 +4,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Espace partenaire — DDRKY</title>
-
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .auth-panel {
+            max-width: 560px;
+            margin: 30px auto 0;
+            padding: 28px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .96);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, .12);
+        }
+
+        .auth-panel h2 { margin-top: 0; }
+        .auth-panel[hidden], #partnerSpace[hidden] { display: none; }
+        .auth-message { margin: 18px 0 0; text-align: center; font-weight: 600; }
+        .auth-message.error { color: #b42318; }
+        .auth-message.success { color: #147a45; }
+        .otp-input {
+            letter-spacing: .45em;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .auth-switch {
+            display: block;
+            margin-top: 18px;
+            border: 0;
+            background: transparent;
+            color: #1769aa;
+            cursor: pointer;
+            text-decoration: underline;
+            width: 100%;
+        }
+        .form-help { display: block; margin-top: 6px; font-size: .85rem; opacity: .75; }
+    </style>
 </head>
 
 <body>
-
-    <!-- ==============================
-         EN-TÊTE
-    =============================== -->
-
     <header class="header">
-
-        <div class="logo">
-            DDRKY
-        </div>
-
+        <div class="logo">DDRKY</div>
         <nav class="navigation">
-
-            <a href="index.html">
-                Accueil
-            </a>
-
-            <a href="boutique.html">
-                Boutique
-            </a>
-
-            <a href="#" id="logoutButton">
-                Déconnexion
-            </a>
-
+            <a href="index.html">Accueil</a>
+            <a href="boutique.html">Boutique</a>
+            <a href="#" id="logoutButton" hidden>Déconnexion</a>
         </nav>
-
     </header>
 
-
-    <!-- ==============================
-         ESPACE PARTENAIRE
-    =============================== -->
-
     <main>
-
-        <section class="application-section">
-
+        <!-- Cette zone est affichée uniquement après authentification Supabase. -->
+        <section id="authSection" class="application-section">
             <div class="application-container">
-
                 <div class="application-title">
-
                     <p>ESPACE DDRKY</p>
-
-                    <h1>
-                        Bienvenue partenaire
-                    </h1>
-
-                    <h2>
-                        TON ESPACE DDRKY.
-                    </h2>
-
-                    <span id="partnerEmail">
-                        Chargement de ton compte...
-                    </span>
-
+                    <h1 id="authTitle">Créer ton compte partenaire</h1>
+                    <h2>VÉRIFIE TON ADRESSE E-MAIL.</h2>
+                    <span id="authSubtitle">Remplis le formulaire pour recevoir ton code de vérification.</span>
                 </div>
 
-
-                <!-- ==============================
-                     INFORMATIONS
-                =============================== -->
-
-                <div class="action-container">
-
-                    <div class="action-card">
-
-                        <div class="action-icon">
-                            🔑
+                <div id="signupPanel" class="auth-panel">
+                    <form id="signupForm">
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="text" id="nom" autocomplete="family-name" required>
                         </div>
-
-                        <h3>
-                            Mon code
-                        </h3>
-
-                        <p>
-                            Ton code personnel DDRKY apparaîtra ici.
-                        </p>
-
-                        <strong>
-                            BIENTÔT
-                        </strong>
-
-                    </div>
-
-
-                    <div class="action-card">
-
-                        <div class="action-icon">
-                            📊
+                        <div class="form-group">
+                            <label for="prenom">Prénom</label>
+                            <input type="text" id="prenom" autocomplete="given-name" required>
                         </div>
-
-                        <h3>
-                            Mes ventes
-                        </h3>
-
-                        <p>
-                            Suis les ventes réalisées avec ton code.
-                        </p>
-
-                        <strong>
-                            0 vente
-                        </strong>
-
-                    </div>
-
-
-                    <div class="action-card partner-card">
-
-                        <div class="action-icon">
-                            💰
+                        <div class="form-group">
+                            <label for="signupEmail">Adresse e-mail</label>
+                            <input type="email" id="signupEmail" autocomplete="email" required>
                         </div>
-
-                        <h3>
-                            Mes gains
-                        </h3>
-
-                        <p>
-                            Consulte tes gains générés grâce à DDRKY.
-                        </p>
-
-                        <strong>
-                            0 FCFA
-                        </strong>
-
-                    </div>
-
-
-                    <div class="action-card">
-
-                        <div class="action-icon">
-                            🏆
+                        <div class="form-group">
+                            <label for="signupPassword">Mot de passe</label>
+                            <input type="password" id="signupPassword" minlength="8" autocomplete="new-password" required>
+                            <small class="form-help">8 caractères minimum.</small>
                         </div>
-
-                        <h3>
-                            Classement
-                        </h3>
-
-                        <p>
-                            Découvre ton classement parmi les partenaires DDRKY.
-                        </p>
-
-                        <strong>
-                            BIENTÔT
-                        </strong>
-
-                    </div>
-
+                        <button type="submit" class="submit-button">Créer mon compte</button>
+                    </form>
+                    <button type="button" class="auth-switch" id="showLoginButton">J'ai déjà un compte</button>
                 </div>
 
-
-                <!-- ==============================
-                     MESSAGE
-                =============================== -->
-
-                <div class="confirmation-message"
-                     style="display: block; margin-top: 40px;">
-
-                    <div class="confirmation-icon">
-                        ✓
-                    </div>
-
-                    <h2>
-                        Ton espace est prêt
-                    </h2>
-
-                    <p>
-                        Ton activité de partenaire sera disponible ici
-                        après validation de ta candidature.
-                    </p>
-
+                <div id="loginPanel" class="auth-panel" hidden>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Adresse e-mail</label>
+                            <input type="email" id="loginEmail" autocomplete="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Mot de passe</label>
+                            <input type="password" id="loginPassword" autocomplete="current-password" required>
+                        </div>
+                        <button type="submit" class="submit-button">Se connecter</button>
+                    </form>
+                    <button type="button" class="auth-switch" id="showSignupButton">Créer un compte</button>
                 </div>
 
+                <div id="otpPanel" class="auth-panel" hidden>
+                    <h2>Vérifie ton e-mail</h2>
+                    <p>Un code à 6 chiffres a été envoyé à <strong id="otpEmail"></strong>.</p>
+                    <form id="otpForm">
+                        <div class="form-group">
+                            <label for="otpCode">Code de vérification</label>
+                            <input class="otp-input" type="text" id="otpCode" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" required>
+                        </div>
+                        <button type="submit" class="submit-button">Vérifier le code</button>
+                    </form>
+                    <button type="button" class="auth-switch" id="resendButton">Renvoyer le code</button>
+                </div>
+
+                <p id="authMessage" class="auth-message" role="alert"></p>
             </div>
-
         </section>
 
+        <section id="partnerSpace" class="application-section" hidden>
+            <div class="application-container">
+                <div class="application-title">
+                    <p>ESPACE DDRKY</p>
+                    <h1>Bienvenue partenaire</h1>
+                    <h2>TON ESPACE DDRKY.</h2>
+                    <span id="partnerEmail"></span>
+                </div>
+
+                <div class="action-container">
+                    <div class="action-card"><div class="action-icon">🔑</div><h3>Mon code</h3><p>Ton code personnel DDRKY apparaîtra ici.</p><strong>BIENTÔT</strong></div>
+                    <div class="action-card"><div class="action-icon">📊</div><h3>Mes ventes</h3><p>Suis les ventes réalisées avec ton code.</p><strong>0 vente</strong></div>
+                    <div class="action-card partner-card"><div class="action-icon">💰</div><h3>Mes gains</h3><p>Consulte tes gains générés grâce à DDRKY.</p><strong>0 FCFA</strong></div>
+                    <div class="action-card"><div class="action-icon">🏆</div><h3>Classement</h3><p>Découvre ton classement parmi les partenaires DDRKY.</p><strong>BIENTÔT</strong></div>
+                </div>
+
+                <div class="confirmation-message" style="display: block; margin-top: 40px;">
+                    <div class="confirmation-icon">✓</div>
+                    <h2>Ton espace est prêt</h2>
+                    <p>Ton activité de partenaire sera disponible ici après validation de ta candidature.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
-
-    <!-- ==============================
-         PIED DE PAGE
-    =============================== -->
-
     <footer class="footer">
-
-        <div class="footer-logo">
-            DDRKY
-        </div>
-
-        <p>
-            From Darkness to Greatness.
-        </p>
-
-        <p class="copyright">
-            © 2026 DDRKY — Tous droits réservés.
-        </p>
-
+        <div class="footer-logo">DDRKY</div>
+        <p>From Darkness to Greatness.</p>
+        <p class="copyright">© 2026 DDRKY — Tous droits réservés.</p>
     </footer>
 
-
-    <!-- SUPABASE -->
-
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <script src="supabase.js"></script>
-
     <script src="script.js"></script>
 
-</body>
+    <script>
+        (() => {
+            const client = window.supabaseClient;
+            const authSection = document.getElementById('authSection');
+            const partnerSpace = document.getElementById('partnerSpace');
+            const logoutButton = document.getElementById('logoutButton');
+            const signupPanel = document.getElementById('signupPanel');
+            const loginPanel = document.getElementById('loginPanel');
+            const otpPanel = document.getElementById('otpPanel');
+            const message = document.getElementById('authMessage');
+            const otpEmail = document.getElementById('otpEmail');
+            let pendingEmail = '';
 
+            const showMessage = (text, type = 'error') => {
+                message.textContent = text;
+                message.className = `auth-message ${type}`;
+            };
+
+            const showSpace = (user) => {
+                authSection.hidden = true;
+                partnerSpace.hidden = false;
+                logoutButton.hidden = false;
+                document.getElementById('partnerEmail').textContent = user.email || '';
+            };
+
+            const showAuth = () => {
+                authSection.hidden = false;
+                partnerSpace.hidden = true;
+                logoutButton.hidden = true;
+            };
+
+            if (!client) {
+                showMessage('La configuration Supabase est introuvable. Ajoute supabase.js avant de continuer.');
+                return;
+            }
+
+            document.getElementById('showLoginButton').onclick = () => {
+                signupPanel.hidden = true;
+                loginPanel.hidden = false;
+                showMessage('');
+            };
+            document.getElementById('showSignupButton').onclick = () => {
+                loginPanel.hidden = true;
+                signupPanel.hidden = false;
+                showMessage('');
+            };
+
+            document.getElementById('signupForm').onsubmit = async (event) => {
+                event.preventDefault();
+                const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+                const password = document.getElementById('signupPassword').value;
+                const nom = document.getElementById('nom').value.trim();
+                const prenom = document.getElementById('prenom').value.trim();
+                showMessage('Création du compte et envoi du code...', 'success');
+
+                const { data, error } = await client.auth.signUp({
+                    email,
+                    password,
+                    options: { data: { nom, prenom } }
+                });
+                if (error) return showMessage(error.message);
+
+                pendingEmail = email;
+                otpEmail.textContent = email;
+                signupPanel.hidden = true;
+                otpPanel.hidden = false;
+                showMessage('Code envoyé. Vérifie ta boîte de réception et tes spams.', 'success');
+                if (data.session) showSpace(data.user);
+            };
+
+            document.getElementById('otpForm').onsubmit = async (event) => {
+                event.preventDefault();
+                const token = document.getElementById('otpCode').value.trim();
+                const { data, error } = await client.auth.verifyOtp({ email: pendingEmail, token, type: 'signup' });
+                if (error) return showMessage('Code invalide ou expiré. Demande un nouveau code.');
+                showMessage('Adresse e-mail vérifiée.', 'success');
+                showSpace(data.user);
+            };
+
+            document.getElementById('resendButton').onclick = async () => {
+                const { error } = await client.auth.resend({ type: 'signup', email: pendingEmail });
+                showMessage(error ? 'Impossible de renvoyer le code.' : 'Un nouveau code vient d’être envoyé.', error ? 'error' : 'success');
+            };
+
+            document.getElementById('loginForm').onsubmit = async (event) => {
+                event.preventDefault();
+                const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+                const password = document.getElementById('loginPassword').value;
+                const { data, error } = await client.auth.signInWithPassword({ email, password });
+                if (error) return showMessage(error.message);
+                showSpace(data.user);
+            };
+
+            logoutButton.onclick = async (event) => {
+                event.preventDefault();
+                await client.auth.signOut();
+                showAuth();
+                loginPanel.hidden = false;
+                signupPanel.hidden = true;
+            };
+
+            client.auth.getSession().then(({ data }) => {
+                if (data.session) showSpace(data.session.user);
+                else showAuth();
+            });
+
+            client.auth.onAuthStateChange((_event, session) => {
+                if (session) showSpace(session.user);
+                else showAuth();
+            });
+        })();
+    </script>
+</body>
 </html>
